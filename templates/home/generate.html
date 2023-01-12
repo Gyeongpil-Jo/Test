@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+<!-- 'load' must be under 'extends'-->
+{% block content %}
+    <div class="container my-3">
+        <h2 class="border-bottom my-4 py-4">{{ result }}</h2>
+    </div>
+    <div class="container my-3">
+        {% for line in text %}
+            <h2 class="border-bottom my-4 py-4">{{ line }}</h2>
+        {% endfor %}
+    </div>
+{% endblock %}

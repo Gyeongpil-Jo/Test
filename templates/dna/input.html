@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+<!-- 'load' must be under 'extends'-->
+{% block content %}
+    <div class="container my-3">
+        <div class="container my-3">
+            <h2 class="border-bottom my-3 py-4">DNA</h2>
+        </div>
+        <div class="container my-3">
+            <p class="border-bottom my-3 py-4">DNA amber</p>
+        </div>
+        <div class="container my-3">
+            <h2 class="border-bottom my-4 py-4">Generate</h2>
+            <form method="post" action="{% url 'dna:input' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- error Start -->
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <div>
+                                    <strong>{{ field.label }}</strong>
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <!-- End -->
+                <label>Sequence</label>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <label><input type="text" class="form-control" name="size_x" value="{{ form.size_x.value|default_if_none:'' }}" placeholder="Input 32 sequence"></label><br>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!-- 'load' must be under 'extends'-->
+{% block content %}
+    <div class="container my-3">
+        <h2 class="border-bottom my-4 py-4">Home</h2>
+    </div>
+    <div class="container my-3">
+        <p class="border-bottom my-3 py-4">Test web site</p>
+    </div>
+    <div class="container my-3">
+        <h2 class="border-bottom my-4 py-4">Generating</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Error Start -->
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <div>
+                                <strong>{{ field.label }}</strong>
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <!-- Error End -->
+            <label>type</label>
+            <div class="card my-3">
+                <div class="card-body">
+                    <label>line<input type="radio" name="type" id="type" value="line"></label>
+                    <label>point<input type="radio" name="type" id="type" value="point"></label>
+                    <label>plane<input type="radio" name="type" id="type" value="plane"></label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label">file</label>
+                <input type="file" class="form-control" name="file" id="file" value="{{ form.file.value|default_if_none:'' }}">
+            </div>
+            <button type="submit" class="btn btn-primary">generate</button>
+        </form>
+    </div>
+{% endblock %}

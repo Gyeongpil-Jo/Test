@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- style CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Test</title>
+</head>
+<body>
+    <!-- navbar -->
+    {% include "navbar.html" %}
+    <!-- content inserted in base template Start -->
+    {% block content %}
+    {% endblock %}
+    <!-- content inserted in base template End -->
+    <!-- Bootstrap JS -->
+    <script src="{% static 'bootstrap.min.js' %}"></script>
+    <!-- javascript -->
+    {% block script %}
+    {% endblock %}
+    <!-- javascript end -->
+</body>
+</html>

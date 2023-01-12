@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+<!-- 'load' must be under 'extends'-->
+{% block content %}
+    <div class="container my-3">
+        <div class="container my-3">
+            <h2 class="border-bottom my-3 py-4">Graphene</h2>
+        </div>
+        <div class="container my-3">
+            <p class="border-bottom my-3 py-4">Graphene</p>
+        </div>
+        <div class="container my-3">
+            <h2 class="border-bottom my-4 py-4">Generate</h2>
+            <form method="post" action="{% url 'graphene:input' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- error Start -->
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for field in form %}
+                            {% if field.errors %}
+                                <div>
+                                    <strong>{{ field.label }}</strong>
+                                    {{ field.errors }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <!-- End -->
+                <label>Size</label>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <label>X size<input type="text" class="form-control" name="size_x" value="{{ form.size_x.value|default_if_none:'' }}"
+                                            placeholder="Input x size (nm)"></label><br>
+                        <label>Y size<input type="text" class="form-control" name="size_y" value="{{ form.size_y.value|default_if_none:'' }}"
+                                            placeholder="Input y size (nm)"></label>
+                    </div>
+                </div>
+
+                <label>Type</label>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <label><input type="radio" name="kind" onclick="showSheet()"> Sheet</label><br>
+                        <label><input type="radio" name="kind" onclick="showCNT()"> CNT</label>
+                    </div>
+                </div>
+                <span id="span-sheet" style="display: none">
+                    <label>Sheet PBC</label>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <label><input type="radio" name="pbc" value="xy"> XY</label><br>
+                            <label><input type="radio" name="pbc" value="x"> X</label><br>
+                            <label><input type="radio" name="pbc" value="y"> Y</label><br>
+                            <label><input type="radio" name="pbc" value="None"> None</label>
+                        </div>
+                    </div>
+                </span>
+                <span id="span-cnt" style="display: none">
+                    <label>CNT Type</label>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <label><input type="radio" name="cnt" value="zigzag"> zigzag</label><br>
+                            <label><input type="radio" name="cnt" value="armchair"> armchair</label>
+                        </div>
+                    </div>
+                </span>
+                <label>Hole</label>
+                <div class="card my-3">
+                    <div class="card-body">
+                        <label><input type="radio" name="hole" value="None" onclick="clickNone()" {% if form.hole.value == 'None' %} checked {% endif %}> None</label>
+                        <label><input type="radio" name="hole" value="Hole" onclick="clickHole()" {% if form.hole.value == 'Hole' %} checked {% endif %}> Hole</label>
+                        <span id="hole-radius" style="display: {% if form.hole.value == 'Hole' %} block {% else %} none {% endif %}">
+                            <label><input type="text" class="form-control" name="radius" value="{{ form.radius.value|default_if_none:'0' }}" placeholder="Input radius of hole (nm)"></label>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script type='text/javascript'>
+        function clickSheet() {
+            document.getElementsByName("cnt").forEach((child) => {
+                child.removeAttribute("checked");
+            })
+        }
+
+        function clickCnt() {
+            document.getElementsByName("pbc").forEach((child) => {
+                child.removeAttribute("checked");
+            })
+        }
+
+        function showSheet() {
+            clickSheet()
+            document.getElementById("span-sheet").style.display = "block";
+            document.getElementById("span-cnt").style.display = "none";
+        }
+
+        function showCNT() {
+            clickCnt()
+            document.getElementById("span-cnt").style.display = "block";
+            document.getElementById("span-sheet").style.display = "none";
+        }
+
+        function clickHole() {
+            document.getElementById("hole-radius").style.display = "block";
+        }
+
+        function clickNone() {
+            document.getElementById("hole-radius").style.display = "none";
+        }
+
+
+    </script>
+{% endblock %}
