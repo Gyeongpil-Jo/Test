@@ -8,7 +8,7 @@ from django.contrib import messages
 
 from .forms import GrapheneForm
 from .models import Graphene
-from Test.settings import BASE_DIR, MEDIA_ROOT
+from Test.settings.base import BASE_DIR, MEDIA_ROOT
 
 import subprocess
 import tempfile

@@ -8,7 +8,7 @@ from django.contrib import messages
 
 from .forms import DnaForm
 from .models import Dna
-from Test.settings import BASE_DIR, MEDIA_ROOT
+from Test.settings.base import BASE_DIR, MEDIA_ROOT
 
 import subprocess
 import tempfile
