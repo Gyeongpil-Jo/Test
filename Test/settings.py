@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'apps.dna.apps.DnaConfig',
-    'apps.SA.apps.SaConfig',
     'apps.graphene.apps.GrapheneConfig',
     'apps.home.apps.HomeConfig',
     'django.contrib.admin',
