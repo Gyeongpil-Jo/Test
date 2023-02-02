@@ -7,4 +7,4 @@ from apps.dna.models import Dna
 class DnaForm(forms.ModelForm):
     class Meta:
         model = Dna
-        fields = ['seq']
+        fields = ['seq', 'seq_num']
