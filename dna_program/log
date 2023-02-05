@@ -1,0 +1,246 @@
+
+   Plase add SLURM option as follows:
+
+   '#SBATCH --nodes=1' 
+   '#SBATCH --ntasks=8' 
+   '#SBATCH --threads-per-core=1' 
+   '#SBATCH --gres=gpu:1' 
+
+
+Loading gromacs/2020.2
+  Loading requirement: gcc/9.5.0 ompi/4.1.4/gcc/9.5.0 nvidia/cuda/11.8
+Insert ...cgccgccgcgggttcctctaggagattctcac...
+Going to read 0 old index file(s)
+Analysing residue names:
+There are:    68        DNA residues
+
+  0 System              :  2153 atoms
+  1 DNA                 :  2153 atoms
+
+ nr : group      '!': not  'name' nr name   'splitch' nr    Enter: list groups
+ 'a': atom       '&': and  'del' nr         'splitres' nr   'l': list residues
+ 't': atom type  '|': or   'keep' nr        'splitat' nr    'h': help
+ 'r': residue              'res' nr         'chain' char
+ "name": group             'case': case sensitive           'q': save and quit
+ 'ri': residue index
+
+> 
+Removed group 1 'DNA'
+Group 2 does not exist
+Group 3 does not exist
+Group 4 does not exist
+Group 5 does not exist
+Group 6 does not exist
+Group 7 does not exist
+Group 8 does not exist
+Group 9 does not exist
+Group 10 does not exist
+Group 11 does not exist
+Group 12 does not exist
+Group 13 does not exist
+Group 14 does not exist
+Group 15 does not exist
+Group 16 does not exist
+Group 17 does not exist
+Group 18 does not exist
+Group 19 does not exist
+Group 20 does not exist
+Group 21 does not exist
+Group 22 does not exist
+Group 23 does not exist
+Group 24 does not exist
+Group 25 does not exist
+Group 26 does not exist
+Group 27 does not exist
+Group 28 does not exist
+Group 29 does not exist
+Group 30 does not exist
+
+> 
+Found 1009 atoms with resind.+1 in range 2-33
+
+  1 r_2-33              :  1009 atoms
+
+> 
+Found 1018 atoms with resind.+1 in range 36-67
+
+  2 r_36-67             :  1018 atoms
+
+> 
+Copied index group 1 'r_2-33'
+Copied index group 2 'r_36-67'
+Merged two groups with OR: 1009 1018 -> 2027
+
+  3 r_2-33_r_36-67      :  2027 atoms
+
+> 
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2153 atoms
+No velocities found
+Selected 1: 'r_2-33'
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2153 atoms
+No velocities found
+Selected 2: 'r_36-67'
+
+Select the Force Field:
+From '/apps/jejoong/gmxlib':
+ 1: a99SBdisp 
+ 2: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)
+ 3: AMBER03ws modification of ff03 (Best, Zheng and Mittal, J. Chem. Theor. Comput., 
+ 4: amber14sb_OL15 nucleic (Zgarbova et al., J. Chem. Theory Comput. 11, 5723-36, 2015
+ 5: AMBER14SB_parmbsc1
+ 6: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)
+ 7: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)
+ 8: AMBER99 force field BSC1 (Orozco et al. Nature methods, 13(1), pp.55-58.)
+ 9: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)
+10: amber99bsc0
+11: amber99bsc0garcia
+12: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)
+13: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)
+14: AMBER99SB-ildn-phi-bsc0 force field (Jejoong's working version)
+15: AMBER99SB-ildn-phi-bsc0-cufix (Jejoong Yoo and Aleksei Aksimentiev, JCTC 2016, 12, 430–443)
+16: AMBER99SB-ildn-phi-bsc0-garcia force field (Test version including Garcia's fix. Don't use this.)
+17: AMBERGS force field (Garcia & Sanbonmatsu, PNAS 99, 2782-2787, 2002)
+18: CHARMM22* all-atom force field
+19: CHARMM27 all-atom force field (with CMAP) - version 2.0
+20: CHARMM27 all-atom force field (with CMAP) - version 2.0beta
+21: CHARMM36 all-atom force field (March 2019)
+22: CHARMM36 all-atom force field (May 2015)
+23: DES_Amber         
+24: DES_Amber_SF1.0        
+25: DNA ordered CHARMM27 all-atom force field (with CMAP) - version 2.0beta
+26: GROMOS96 43a1 force field
+27: GROMOS96 43a2 force field (improved alkane dihedrals)
+28: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)
+29: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)
+30: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)
+31: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)
+32: OPLS-AA/M all-atom force field (2015 aminoacid dihedrals)
+33: [DEPRECATED] Encad all-atom force field, using full solvent charges
+34: [DEPRECATED] Encad all-atom force field, using scaled-down vacuum charges
+35: [DEPRECATED] Gromacs force field (see manual)
+36: [DEPRECATED] Gromacs force field with hydrogens for NMR
+From '/apps/vv137/gmxlib':
+37: AMBER ff19SB force field
+38: AMBER ff19SB force field with CUFIX 2022
+39: AMBER ff19SB force field with OPC water and Li/Merz ions
+40: CHARMM36 July 2022
+41: CHARMM36 with LJ PME July 2022
+From '/apps/common/gromacs/2020.2_cuda-11.7/share/gromacs/top':
+42: AMBER03 protein, nucleic AMBER94 (Duan et al., J. Comp. Chem. 24, 1999-2012, 2003)
+43: AMBER94 force field (Cornell et al., JACS 117, 5179-5197, 1995)
+44: AMBER96 protein, nucleic AMBER94 (Kollman et al., Acc. Chem. Res. 29, 461-469, 1996)
+45: AMBER99 protein, nucleic AMBER94 (Wang et al., J. Comp. Chem. 21, 1049-1074, 2000)
+46: AMBER99SB protein, nucleic AMBER94 (Hornak et al., Proteins 65, 712-725, 2006)
+47: AMBER99SB-ILDN protein, nucleic AMBER94 (Lindorff-Larsen et al., Proteins 78, 1950-58, 2010)
+48: AMBERGS force field (Garcia & Sanbonmatsu, PNAS 99, 2782-2787, 2002)
+49: CHARMM27 all-atom force field (CHARM22 plus CMAP for proteins)
+50: GROMOS96 43a1 force field
+51: GROMOS96 43a2 force field (improved alkane dihedrals)
+52: GROMOS96 45a3 force field (Schuler JCC 2001 22 1205)
+53: GROMOS96 53a5 force field (JCC 2004 vol 25 pag 1656)
+54: GROMOS96 53a6 force field (JCC 2004 vol 25 pag 1656)
+55: GROMOS96 54a7 force field (Eur. Biophys. J. (2011), 40,, 843-856, DOI: 10.1007/s00249-011-0700-9)
+56: OPLS-AA/L all-atom force field (2001 aminoacid dihedrals)
+
+Using the Amber99sb-ildn-phi-bsc0 force field in directory /apps/jejoong/gmxlib/amber99sb-ildn-phi-bsc0.ff
+
+
+Select the Water Model:
+going to rename /apps/jejoong/gmxlib/amber99sb-ildn-phi-bsc0.ff/aminoacids.r2b
+going to rename /apps/jejoong/gmxlib/amber99sb-ildn-phi-bsc0.ff/dna.r2b
+going to rename /apps/jejoong/gmxlib/amber99sb-ildn-phi-bsc0.ff/rna.r2b
+Reading dna.pdb...
+Read '', 1312 atoms
+Analyzing pdb file
+Splitting chemical chains based on changing chain id only (ignoring TER records).
+
+Merged chains into joint molecule definitions at 1 places.
+
+There are 1 chains and 0 blocks of water and 64 residues with 1312 atoms
+
+  chain  #res #atoms
+  1 'A'    64   1312  
+
+Reading residue database... (Amber99sb-ildn-phi-bsc0)
+Processing chain 1 'A' (1312 atoms, 64 residues)
+Identified residue DCJ1 as a starting terminus.
+Identified residue DC32 as a ending terminus.
+Identified residue DGJ1 as a starting terminus.
+Identified residue DG32 as a ending terminus.
+Checking for duplicate atoms....
+Generating any missing hydrogen atoms and/or adding termini.
+Now there are 64 residues with 2027 atoms
+		--------- PLEASE NOTE ------------
+You have successfully generated a topology from: dna.pdb.
+The Amber99sb-ildn-phi-bsc0 force field and the tip3p water model are used.
+		--------- ETON ESAELP ------------
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2027 atoms
+No velocities found
+    system size :  1.948  2.013 11.138 (nm)
+    center      : -0.002  0.008  5.587 (nm)
+    box vectors :  0.000  0.000  0.000 (nm)
+    box angles  :   0.00   0.00   0.00 (degrees)
+    box volume  :   0.00               (nm^3)
+
+WARNING: Masses and atomic (Van der Waals) radii will be guessed
+         based on residue and atom names, since they could not be
+         definitively assigned from the information in your input
+         files. These guessed numbers might deviate from the mass
+         and radius of the atom type. Please check the output
+         files if necessary.
+
+Selected 0: 'System'
+new system size : 11.135  1.967  2.016
+    shift       :  2.987  3.000 -0.168 (nm)
+new center      :  3.000  3.000  5.408 (nm)
+new box vectors :  6.000  6.000 10.816 (nm)
+new box angles  :  90.00  90.00  90.00 (degrees)
+new box volume  : 389.38               (nm^3)
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2027 atoms
+Volume: 389.376 nm^3, corresponds to roughly 175200 electrons
+No velocities found
+    system size : 11.135  1.967  2.016 (nm)
+    center      :  3.000  3.000  5.408 (nm)
+    box vectors :  6.000  6.000 10.816 (nm)
+    box angles  :  90.00  90.00  90.00 (degrees)
+    box volume  : 389.38               (nm^3)
+    shift       : -3.000 -3.000 -5.408 (nm)
+new center      :  0.000 -0.000  0.000 (nm)
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2027 atoms
+Volume: 389.376 nm^3, corresponds to roughly 175200 electrons
+No velocities found
+    system size : 11.135  1.967  2.016 (nm)
+    center      : -0.000 -0.000  0.000 (nm)
+    box vectors :  6.000  6.000 10.816 (nm)
+    box angles  :  90.00  90.00  90.00 (degrees)
+    box volume  : 389.38               (nm^3)
+Rotating 0, 90, 0 degrees around the X, Y and Z axis respectively
+new system size :  2.016  1.967 11.135
+new center      :  0.000 -0.000  0.000 (nm)
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2027 atoms
+Volume: 389.376 nm^3, corresponds to roughly 175200 electrons
+No velocities found
+    system size :  2.016  1.967 11.135 (nm)
+    center      :  0.000 -0.000  0.000 (nm)
+    box vectors :  6.000  6.000 10.816 (nm)
+    box angles  :  90.00  90.00  90.00 (degrees)
+    box volume  : 389.38               (nm^3)
+    shift       :  3.000  3.000  5.408 (nm)
+new center      :  3.000  3.000  5.408 (nm)
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 2027 atoms
+Volume: 337.21 nm^3, corresponds to roughly 151700 electrons
+No velocities found
+    system size :  2.006  1.995 11.135 (nm)
+    center      :  2.998  2.999  5.408 (nm)
+    box vectors :  6.000  6.000 10.816 (nm)
+    box angles  :  90.00  90.00  60.00 (degrees)
+    box volume  : 337.21               (nm^3)
+    shift       :  1.502 -0.401 -0.000 (nm)
+new center      :  4.500  2.598  5.408 (nm)

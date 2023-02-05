@@ -5,7 +5,6 @@ from django.http import HttpResponseNotAllowed, HttpResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.core import serializers
 
 from .forms import DnaForm
 from .models import Dna
@@ -14,7 +13,6 @@ from Test.settings.base import BASE_DIR, MEDIA_ROOT
 import subprocess
 import tempfile
 import tarfile
-import json
 import os
 
 
@@ -26,6 +24,7 @@ def input_dna(request):
             job = form.save(commit=False)
             job.seq_num = len(job.seq)
             job.save()
+            build_dna(job.id)
 
             return redirect('dna:output', job_id=job.id)
 
@@ -41,9 +40,9 @@ def output_dna(request, job_id):
     return render(request, 'dna/output.html', context)
 
 
-def build_dna(request, job_id):
+def build_dna(job_id):
     job = get_object_or_404(Dna, pk=job_id)
-    program_dir = BASE_DIR + "/dna"
+    program_dir = f"{BASE_DIR}" + "/dna_program"
 
     with tempfile.TemporaryDirectory() as temp_dir:
         os.system(f"cp -r {program_dir}/* {temp_dir}")
@@ -64,6 +63,7 @@ def build_dna(request, job_id):
                 os.chdir(cur_dir)
         else:
             pass
+
 
 def file_download(request, job_id):
     file_path = os.path.join(MEDIA_ROOT, 'jobs_dna')
